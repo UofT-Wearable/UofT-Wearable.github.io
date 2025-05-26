@@ -1,114 +1,147 @@
-<!DOCTYPE html>
+this was our index html: <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UofT Wearable Technologies Club</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>UofT Wearable</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #002A5C;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        header .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://via.placeholder.com/1920x500') no-repeat center center/cover;
+            opacity: 0.5;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #005BBB;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #FFD700;
+        }
+        .section {
+            padding: 40px;
+            text-align: center;
+        }
+        .about, .projects, .events, .gallery, .contact {
+            background-color: #F1F1F1;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            color: #002A5C;
+            margin-bottom: 20px;
+        }
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel img {
+            width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #002A5C;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-bg" role="img" aria-label="Wearable tech background"></div>
-        <div class="header-content">
-            <h1>UofT Wearable Technologies Club</h1>
-            <p>Innovating the future of wearable technology through collaboration and creativity.</p>
-            <a href="#projects" class="btn btn-primary">Explore Projects</a>
-        </div>
+    <header>
+        <div class="header-bg"></div>
+        <h1>UofT Wearable</h1>
+        <p>Innovating the future of wearable technology</p>
     </header>
-
-    <nav class="site-nav">
-        <div class="container">
-            <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
-                <span class="hamburger"></span>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#team">Our Team</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+    <nav>
+        <a href="about.html">About Us</a>
+        <a href="Our Team.html">Our Team</a>
+        <a href="projects.html">Projects</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact Us</a>
     </nav>
 
-    <main>
-        <section id="about" class="section about">
-            <div class="container">
-                <h2>About Us</h2>
-                <p>We are a student-run club at the University of Toronto dedicated to wearable technology. From prototypes to workshops, join us in pushing the boundaries of tech.</p>
-            </div>
-        </section>
+    
 
-        <section id="team" class="section team">
-            <div class="container">
-                <h2>Our Team</h2>
-                <div class="team-grid">
-                    <!-- Example member -->
-                    <div class="team-member">
-                        <img src="assets/team/member1.jpg" alt="Jane Doe, President">
-                        <h3>Jane Doe</h3>
-                        <p>Club President</p>
-                    </div>
-                    <!-- Repeat for other members -->
-                </div>
-            </div>
-        </section>
+    
 
-        <section id="projects" class="section projects">
-            <div class="container">
-                <h2>Projects</h2>
-                <div class="projects-grid">
-                    <!-- Example project card -->
-                    <div class="project-card">
-                        <img src="assets/projects/project1.jpg" alt="Project 1 screenshot">
-                        <h3>Project Title</h3>
-                        <p>Short description of the project.</p>
-                        <a href="projects.html" class="btn btn-secondary">Learn More</a>
-                    </div>
-                    <!-- Repeat for other projects -->
-                </div>
-            </div>
-        </section>
+    <section id="ombudsperson">
+        <h2>Contact Ombudsperson</h2>
+        <p>If you have any complaints or concerns, please reach out to our Ombudsperson at:</p>
+        <p>Email: <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a></p>
+        <p>You can also review our <a href="https://github.com/skule/bylaws/blob/master/policies/Policy-on-Complaints.pdf" target="_blank">Complaints Policy</a> for more information.</p>
+    </section>
 
-        <section id="gallery" class="section gallery">
-            <div class="container">
-                <h2>Gallery</h2>
-                <div class="carousel" aria-roledescription="carousel">
-                    <button class="carousel-button prev" aria-label="Previous slide">&#10094;</button>
-                    <div class="carousel-track">
-                        <img src="assets/gallery/image1.jpg" alt="">
-                        <img src="assets/gallery/image2.jpg" alt="">
-                        <img src="assets/gallery/image3.jpg" alt="">
-                    </div>
-                    <button class="carousel-button next" aria-label="Next slide">&#10095;</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section contact">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <form action="mailto:wearable@utoronto.ca" method="post" enctype="text/plain" class="contact-form">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-                <div class="ombudsperson">
-                    <h3>Ombudsperson</h3>
-                    <p>For complaints, contact: <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a></p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2025 UofT Wearable Technologies Club. All rights reserved.</p>
-        </div>
+    <footer>
+        <p>&copy; 2024 UofT Wearable. All rights reserved.</p>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.carousel img');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${(i - index) * 100}%)`;
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        showSlide(currentIndex);
+    </script>
 </body>
 </html>
