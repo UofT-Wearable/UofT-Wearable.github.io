@@ -3,55 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet the Team - UofT Wearable Design Team</title>
+    <title>Meet the Team - UofT Wearable</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        :root {
+            --uoft-blue: #002A5C;
+            --uoft-boundless: #005BBB;
+            --accent-gold: #FFD700;
+            --light-gray: #f4f4f4;
+            --text-dark: #333;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F1F1F1;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-gray);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .team {
-            padding: 40px;
-            text-align: center;
+
+        /* --- Navigation (Consistent with Home) --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--uoft-blue);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- Page Header --- */
+        .page-header {
             background-color: white;
-            margin: 40px auto;
-            max-width: 800px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 4px solid var(--accent-gold);
         }
-        .team h2 {
-            color: #002A5C;
+
+        .page-header h1 {
+            color: var(--uoft-blue);
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Team Grid --- */
+        .team-section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            justify-content: center;
+        }
+
+        /* --- Profile Cards --- */
+        .team-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding: 30px;
+            border-top: 5px solid var(--uoft-boundless);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--light-gray);
             margin-bottom: 20px;
         }
-        .team-lead {
-            margin: 20px 0;
+
+        .team-card h3 {
+            color: var(--uoft-blue);
+            margin: 10px 0 5px 0;
+            font-size: 1.5rem;
         }
-        .team-lead h3 {
-            color: #005BBB;
-            margin-bottom: 8px;
+
+        .role {
+            color: var(--accent-gold);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
         }
-        .team-lead p {
-            margin: 0;
-            color: #333;
+
+        .program {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: var(--uoft-blue);
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- Footer (Consistent with Home) --- */
+        footer {
+            background-color: var(--uoft-blue);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .ombuds-section {
+            background-color: #001f45;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .ombuds-section a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; }
+            .nav-links { margin-top: 15px; }
+            .nav-links a { margin: 0 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="team">
-        <h2>Meet the Team</h2>
-        <div class="team-lead">
-            <h3>Co-Leader, Co-founder</h3>
-            <p>Jaehah Shin (EngSci 2T6, Robotics)</p>
+
+    <nav>
+        <a href="index.html" class="nav-logo">UofT Wearable</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="Our Team.html">Team</a>
+            <a href="projects.html">Projects</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
         </div>
-        <div class="team-lead">
-            <h3>Co-Leader, Co-founder</h3>
-            <p>Ian Wu (EngSci 2T6, Robotics)</p>
-        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Meet the Team</h1>
+        <p>The minds behind the innovation.</p>
     </div>
+
+    <section class="team-section">
+        <div class="team-grid">
+            
+            <div class="team-card">
+                <img src="https://ui-avatars.com/api/?name=Jaehah+Shin&background=002A5C&color=fff&size=200" alt="Jaehah Shin" class="profile-img">
+                <h3>Jaehah Shin</h3>
+                <div class="role">Co-Leader, Co-founder</div>
+                <div class="program">EngSci 2T6, Robotics</div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <img src="https://ui-avatars.com/api/?name=Ian+Wu&background=002A5C&color=fff&size=200" alt="Ian Wu" class="profile-img">
+                <h3>Ian Wu</h3>
+                <div class="role">Co-Leader, Co-founder</div>
+                <div class="program">EngSci 2T6, Robotics</div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <footer>
-        <p style="text-align: center; color: #666; margin-top: 40px;">&copy; 2024 UofT Wearable. All rights reserved.</p>
+        <h3>UofT Wearable</h3>
+        <p class="footer-links">
+            <a href="https://www.instagram.com/uoft_wearable/" target="_blank">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Discord</a>
+        </p>
+        
+        <div class="ombuds-section">
+            <p><strong>Concerns or Complaints?</strong></p>
+            <p>Contact the Ombudsperson: <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a></p>
+            <p>Review the <a href="https://github.com/skule/bylaws/blob/master/policies/Policy-on-Complaints.pdf" target="_blank">Complaints Policy</a></p>
+        </div>
+
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2024 UofT Wearable. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
