@@ -28,7 +28,7 @@
             min-height: 100vh;
         }
 
-        /* --- Navigation (Consistent with Home) --- */
+        /* --- Navigation --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -97,7 +97,7 @@
             justify-content: center;
         }
 
-        /* --- Profile Cards --- */
+        /* --- Profile Cards (Simplified) --- */
         .team-card {
             background: white;
             border-radius: 10px;
@@ -105,27 +105,19 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
             text-align: center;
-            padding: 30px;
+            padding: 40px 30px; /* Increased top/bottom padding since image is gone */
             border-top: 5px solid var(--uoft-boundless);
         }
 
         .team-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--light-gray);
-            margin-bottom: 20px;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
         .team-card h3 {
             color: var(--uoft-blue);
-            margin: 10px 0 5px 0;
-            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            font-size: 1.8rem; /* Made name slightly larger */
         }
 
         .role {
@@ -134,26 +126,16 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         .program {
             color: #555;
             font-style: italic;
-            margin-bottom: 15px;
+            font-size: 1rem;
         }
 
-        .social-links a {
-            color: var(--uoft-blue);
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* --- Footer (Consistent with Home) --- */
+        /* --- Footer --- */
         footer {
             background-color: var(--uoft-blue);
             color: white;
@@ -216,25 +198,15 @@
         <div class="team-grid">
             
             <div class="team-card">
-                <img src="https://ui-avatars.com/api/?name=Jaehah+Shin&background=002A5C&color=fff&size=200" alt="Jaehah Shin" class="profile-img">
                 <h3>Jaehah Shin</h3>
                 <div class="role">Co-Leader, Co-founder</div>
                 <div class="program">EngSci 2T6, Robotics</div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fas fa-envelope"></i></a>
-                </div>
             </div>
 
             <div class="team-card">
-                <img src="https://ui-avatars.com/api/?name=Ian+Wu&background=002A5C&color=fff&size=200" alt="Ian Wu" class="profile-img">
                 <h3>Ian Wu</h3>
                 <div class="role">Co-Leader, Co-founder</div>
                 <div class="program">EngSci 2T6, Robotics</div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fas fa-envelope"></i></a>
-                </div>
             </div>
 
         </div>
