@@ -5,61 +5,239 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - UofT Wearable</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        :root {
+            --uoft-blue: #002A5C;
+            --uoft-boundless: #005BBB;
+            --accent-gold: #FFD700;
+            --light-gray: #f4f4f4;
+            --text-dark: #333;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F1F1F1;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-gray);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .contact {
-            padding: 40px;
-            text-align: center;
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--uoft-blue);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- Page Header --- */
+        .page-header {
             background-color: white;
-            margin: 40px auto;
-            max-width: 800px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 4px solid var(--accent-gold);
         }
-        .contact h2 {
-            color: #002A5C;
+
+        .page-header h1 {
+            color: var(--uoft-blue);
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Contact Content --- */
+        .contact-section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--uoft-boundless);
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 3rem;
+            color: var(--uoft-blue);
             margin-bottom: 20px;
         }
-        .contact p {
-            margin: 10px 0;
-            line-height: 1.6;
-            color: #333;
+
+        .contact-card h3 {
+            margin-bottom: 15px;
+            color: var(--text-dark);
         }
-        .contact a {
-            color: #005BBB;
+
+        .contact-card p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--uoft-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
+            transition: background 0.3s;
         }
-        .contact a:hover {
-            color: #FFD700;
+
+        .contact-btn:hover {
+            background-color: var(--uoft-boundless);
         }
-        #follow-us {
-            margin-top: 20px;
-        }
+
+        /* --- Footer --- */
         footer {
+            background-color: var(--uoft-blue);
+            color: white;
+            padding: 40px 20px;
             text-align: center;
-            margin-top: 40px;
-            color: #666;
+        }
+
+        .footer-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .ombuds-section {
+            background-color: #001f45;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .ombuds-section a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; }
+            .nav-links { margin-top: 15px; }
+            .nav-links a { margin: 0 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="contact">
-        <h2>Contact Us</h2>
-        <p>Interested in collaborating or joining our team? Reach out to us at <a href="mailto:uoftwearable@gmail.com">uoftwearable@gmail.com</a>.</p>
-        <section id="follow-us">
-            <h2>Follow Us on Instagram</h2>
-            <p>Stay updated with our latest projects and events by following us on Instagram.</p>
-            <p>Instagram: <a href="https://www.instagram.com/uoft_wearable/" target="_blank">@uoft_wearable</a></p>
-        </section>
+
+    <nav>
+        <a href="index.html" class="nav-logo">UofT Wearable</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="Our Team.html">Team</a>
+            <a href="projects.html">Projects</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Get in Touch</h1>
+        <p>Collaborate, join the team, or just say hello.</p>
     </div>
+
+    <section class="contact-section">
+        <div class="contact-grid">
+            
+            <div class="contact-card">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>Email Us</h3>
+                <p>Interested in collaborating or joining our team? Send us a message directly.</p>
+                <a href="mailto:uoftwearable@studentorg.utoronto.ca" class="contact-btn">Send Email</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-share-alt"></i>
+                <h3>Follow Us</h3>
+                <p>Stay updated with our latest projects, events, and workshops.</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://www.instagram.com/uoft_wearable/" target="_blank" class="contact-btn" style="margin-right: 10px; background-color: #C13584;">Instagram</a>
+                    <a href="https://www.linkedin.com/company/uoft-wearable/" target="_blank" class="contact-btn" style="background-color: #0077b5;">LinkedIn</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2024 UofT Wearable. All rights reserved.</p>
+        <h3>UofT Wearable</h3>
+        <p class="footer-links">
+            <a href="https://www.instagram.com/uoft_wearable/" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/company/uoft-wearable/" target="_blank">LinkedIn</a>
+        </p>
+        
+        <div class="ombuds-section">
+            <p><strong>Concerns or Complaints?</strong></p>
+            <p>Contact the Ombudsperson: <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a></p>
+            <p>Review the <a href="https://github.com/skule/bylaws/blob/master/policies/Policy-on-Complaints.pdf" target="_blank">Complaints Policy</a></p>
+        </div>
+
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2024 UofT Wearable. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
