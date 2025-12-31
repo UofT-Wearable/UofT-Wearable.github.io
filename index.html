@@ -1,147 +1,390 @@
-this was our index html: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UofT Wearable</title>
+    <title>UofT Wearable Technology</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        :root {
+            --uoft-blue: #002A5C;
+            --uoft-boundless: #005BBB;
+            --accent-gold: #FFD700;
+            --light-gray: #f4f4f4;
+            --text-dark: #333;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
         }
-        header {
-            background-color: #002A5C;
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--uoft-blue);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-logo {
             color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
         }
-        header .header-bg {
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- Hero Section --- */
+        header {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .header-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: url('https://via.placeholder.com/1920x500') no-repeat center center/cover;
-            opacity: 0.5;
+            /* Placeholder image representing tech/labs */
+            background: linear-gradient(rgba(0, 42, 92, 0.7), rgba(0, 42, 92, 0.7)), url('https://images.unsplash.com/photo-1555664424-778a693065af?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #005BBB;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease;
         }
-        nav a {
-            color: white;
+
+        header p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--uoft-blue);
+            padding: 12px 30px;
             text-decoration: none;
-            margin: 0 15px;
             font-weight: bold;
-            transition: color 0.3s;
+            border-radius: 5px;
+            transition: transform 0.2s, background 0.3s;
         }
-        nav a:hover {
-            color: #FFD700;
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #fff;
         }
+
+        /* --- Sections General --- */
         .section {
-            padding: 40px;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
         }
-        .about, .projects, .events, .gallery, .contact {
-            background-color: #F1F1F1;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+
         .section h2 {
-            color: #002A5C;
-            margin-bottom: 20px;
-        }
-        .carousel {
-            display: flex;
-            overflow: hidden;
+            color: var(--uoft-blue);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
             position: relative;
+            display: inline-block;
         }
-        .carousel img {
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-gold);
+            margin: 10px auto 0;
+        }
+
+        /* --- Carousel Section --- */
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .carousel-slide {
+            display: none;
+        }
+
+        .carousel-slide.active {
+            display: block;
+            animation: fade 0.5s;
+        }
+
+        .carousel-slide img {
             width: 100%;
-            transition: transform 0.5s ease-in-out;
+            height: 400px;
+            object-fit: cover;
         }
-        .carousel-buttons {
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 42, 92, 0.8);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .carousel-btn {
             position: absolute;
             top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
             transform: translateY(-50%);
-        }
-        .carousel-buttons button {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
+            background-color: rgba(255,255,255,0.3);
             border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        footer {
-            background-color: #002A5C;
             color: white;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(0, 42, 92, 0.9);
+        }
+
+        .prev { left: 0; }
+        .next { right: 0; }
+
+        /* --- Features/Cards --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--uoft-boundless);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--uoft-blue);
+            margin-bottom: 20px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--uoft-blue);
+            color: white;
+            padding: 40px 20px;
             text-align: center;
-            padding: 10px 0;
+        }
+
+        .footer-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .ombuds-section {
+            background-color: #001f45;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .ombuds-section a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade {
+            from { opacity: 0.4 } 
+            to { opacity: 1 }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            nav { flex-direction: column; }
+            .nav-links { margin-top: 15px; }
+            .nav-links a { margin: 0 10px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-bg"></div>
-        <h1>UofT Wearable</h1>
-        <p>Innovating the future of wearable technology</p>
-    </header>
+
     <nav>
-        <a href="about.html">About Us</a>
-        <a href="Our Team.html">Our Team</a>
-        <a href="projects.html">Projects</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="#" class="nav-logo">UofT Wearable</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="Our Team.html">Team</a>
+            <a href="projects.html">Projects</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
 
-    
+    <header>
+        <div class="header-bg"></div>
+        <h1>Innovating the Future</h1>
+        <p>Design, build, and showcase the next generation of wearable technology.</p>
+        <a href="#projects" class="btn">View Our Work</a>
+    </header>
 
-    
+    <section class="section" id="about">
+        <h2>What We Do</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-microchip"></i>
+                <h3>Hardware Design</h3>
+                <p>We prototype custom PCBs and integrate sensors to create responsive wearable devices.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-code"></i>
+                <h3>Software Dev</h3>
+                <p>From embedded C++ to React Native apps, we build the brains behind the hardware.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Community</h3>
+                <p>Workshops, hackathons, and industry events to connect students with the future of tech.</p>
+            </div>
+        </div>
+    </section>
 
-    <section id="ombudsperson">
-        <h2>Contact Ombudsperson</h2>
-        <p>If you have any complaints or concerns, please reach out to our Ombudsperson at:</p>
-        <p>Email: <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a></p>
-        <p>You can also review our <a href="https://github.com/skule/bylaws/blob/master/policies/Policy-on-Complaints.pdf" target="_blank">Complaints Policy</a> for more information.</p>
+    <section class="section" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="carousel-container">
+            <div class="carousel-slide active">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" alt="Smart Watch Prototype">
+                <div class="carousel-caption">
+                    <h3>Smart Health Monitor</h3>
+                    <p>Real-time vitals tracking using custom bio-sensors.</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="VR Headset">
+                <div class="carousel-caption">
+                    <h3>Haptic VR Glove</h3>
+                    <p>Feeling the virtual world through piezoelectric feedback.</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop" alt="Circuit Board">
+                <div class="carousel-caption">
+                    <h3>Arduino Wearable Kit</h3>
+                    <p>Educational kits designed for our first-year workshops.</p>
+                </div>
+            </div>
+
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 UofT Wearable. All rights reserved.</p>
+        <h3>UofT Wearable</h3>
+        <p class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Discord</a>
+        </p>
+        
+        <div class="ombuds-section">
+            <p><strong>Concerns or Complaints?</strong></p>
+            <p>Contact the Ombudsperson: <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a></p>
+            <p>Review the <a href="https://github.com/skule/bylaws/blob/master/policies/Policy-on-Complaints.pdf" target="_blank">Complaints Policy</a></p>
+        </div>
+
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2024 UofT Wearable. All rights reserved.</p>
     </footer>
 
     <script>
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.carousel img');
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
 
         function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.transform = `translateX(${(i - index) * 100}%)`;
+            // Loop functionality
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
             });
+
+            // Show active slide
+            slides[slideIndex].classList.add('active');
         }
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
+        function moveSlide(n) {
+            slideIndex += n;
+            showSlide(slideIndex);
         }
 
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
-        }
-
-        showSlide(currentIndex);
+        // Auto play every 5 seconds
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
     </script>
 </body>
 </html>
