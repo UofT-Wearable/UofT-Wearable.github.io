@@ -3,72 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - UofT Wearable Design Team</title>
+    <title>Projects - UofT Wearable</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        :root {
+            --uoft-blue: #002A5C;
+            --uoft-boundless: #005BBB;
+            --accent-gold: #FFD700;
+            --light-gray: #f4f4f4;
+            --text-dark: #333;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F1F1F1;
-        }
-        .projects {
-            padding: 40px;
-            text-align: center;
-            background-color: white;
-            margin: 40px auto;
-            max-width: 800px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        .projects h2 {
-            color: #002A5C;
-            margin-bottom: 20px;
-        }
-        .projects p {
-            margin: 10px 0;
             line-height: 1.6;
-            color: #333;
-            text-align: left;
+            color: var(--text-dark);
+            background-color: var(--light-gray);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .projects ul {
-            text-align: left;
-            color: #333;
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--uoft-blue);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .projects ul li {
-            margin: 8px 0;
+
+        .nav-logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- Page Header --- */
+        .page-header {
+            background-color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        .page-header h1 {
+            color: var(--uoft-blue);
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Main Layout --- */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        /* --- Section 1: Mandate Grid --- */
+        .mandate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .mandate-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--uoft-boundless);
+        }
+
+        .mandate-card i {
+            font-size: 2rem;
+            color: var(--uoft-blue);
+            margin-bottom: 10px;
+        }
+
+        .mandate-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        /* --- Section 2: Main Project (ECG) --- */
+        .project-highlight {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+
+        .project-header {
+            background-color: var(--uoft-blue);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .scope-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .scope-list li {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .scope-list li::before {
+            content: '\f00c'; /* FontAwesome checkmark */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+        }
+
+        /* --- Section 3: Tech Stack & Learning --- */
+        .tech-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .tech-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .tech-card h3 {
+            color: var(--uoft-blue);
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background-color: var(--uoft-boundless);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 5px 5px 5px 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--uoft-blue);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .ombuds-section {
+            background-color: #001f45;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .ombuds-section a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; }
+            .nav-links { margin-top: 15px; }
+            .nav-links a { margin: 0 10px; }
+            .tech-section { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="projects">
-        <h2> Project for 2024 - 2025</h2>
-        <p>We are a new EngSoc Trial Status club, and our mandate is to develop wearable expertise in the community through three areas:</p>
-        <ul>
-            <li>Embedded electronics</li>
-            <li>Form and function</li>
-            <li>Companion software applications</li>
-        </ul>
-        <p>Our first project is a Wearable ECG (Electrocardiogram) sensor, which measures the electrical signals of the heart. The scope of this project includes:</p>
-        <ul>
-            <li>Designing and placing physical electrodes</li>
-            <li>Developing hardware connections</li>
-            <li>Establishing hardware communication to sensors on a microcontroller</li>
-            <li>Implementing wireless Bluetooth communication from the microcontroller to a smartphone</li>
-            <li>Building a smartphone application</li>
-        </ul>
-        <p>Upon successful prototyping, we plan to move into PCB design and manufacturing to create a prototype with a realistic, enclosed electronic form factor.</p>
-        <p>This project benefits the Skule community by creating a space to learn and practice wearable technology development. We will host teaching sessions on topics such as:</p>
-        <ul>
-            <li>Programming embedded systems using the Zephyr RTOS</li>
-            <li>Hardware-sensor communication</li>
-            <li>Application development using Flutter</li>
-        </ul>
-        <p>Our biomedical focus explores the development of an all-day wearable ECG monitoring solution. If successful, this project could significantly impact healthcare.</p>
-        <p>We are using the MAX30001G Evaluation Kit, which allows us to prototype various 2-electrode ECG devices. This industry-standard sensor provides invaluable experience with biomedical sensors used worldwide in wearable heart monitors. Developing a full-fledged wearable prototype with a PCB is essential, and this sensor chip is critical for success.</p>
+
+    <nav>
+        <a href="index.html" class="nav-logo">UofT Wearable</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="Our Team.html">Team</a>
+            <a href="projects.html">Projects</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Project 2024 - 2025</h1>
+        <p>Innovation in Action</p>
     </div>
+
+    <div class="container">
+        
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 30px auto;">
+            We are a new EngSoc Trial Status club. Our mandate is to develop wearable expertise in the community through three key areas:
+        </p>
+        <div class="mandate-grid">
+            <div class="mandate-card">
+                <i class="fas fa-microchip"></i>
+                <h3>Embedded Electronics</h3>
+            </div>
+            <div class="mandate-card">
+                <i class="fas fa-drafting-compass"></i>
+                <h3>Form & Function</h3>
+            </div>
+            <div class="mandate-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Companion Software</h3>
+            </div>
+        </div>
+
+        <div class="project-highlight">
+            <div class="project-header">
+                <h2><i class="fas fa-heartbeat" style="margin-right: 10px;"></i> Wearable ECG Sensor</h2>
+                <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 15px; font-size: 0.9rem;">Current Focus</span>
+            </div>
+            <div class="project-content">
+                <p>Our first project is a Wearable ECG (Electrocardiogram) sensor, which measures the electrical signals of the heart. Our biomedical focus explores the development of an all-day wearable monitoring solution that could significantly impact healthcare.</p>
+                
+                <h3 style="color: var(--uoft-blue); margin-top: 20px;">Project Scope</h3>
+                <ul class="scope-list">
+                    <li>Designing and placing physical electrodes</li>
+                    <li>Developing hardware connections</li>
+                    <li>Establishing hardware communication to sensors on a microcontroller</li>
+                    <li>Implementing wireless Bluetooth communication (MCU to Smartphone)</li>
+                    <li>Building a smartphone application</li>
+                    <li><strong>Future Goal:</strong> PCB design and manufacturing for a realistic form factor.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tech-section">
+            
+            <div class="tech-card">
+                <h3><i class="fas fa-chalkboard-teacher"></i> Workshops & Learning</h3>
+                <p>This project creates a space for the Skule community to learn. We host teaching sessions on:</p>
+                <div style="margin-top: 15px;">
+                    <span class="tech-badge">Zephyr RTOS</span>
+                    <span class="tech-badge">Embedded C</span>
+                    <span class="tech-badge">Flutter App Dev</span>
+                    <span class="tech-badge">Sensor Comms</span>
+                </div>
+            </div>
+
+            <div class="tech-card">
+                <h3><i class="fas fa-server"></i> Hardware Focus</h3>
+                <p>We are utilizing industry-standard technology to provide invaluable experience with biomedical sensors used worldwide.</p>
+                <p><strong>Primary Kit:</strong> MAX30001G Evaluation Kit</p>
+                <p style="font-size: 0.9rem; color: #666;">This allows us to prototype various 2-electrode ECG devices and is critical for our move toward custom PCB design.</p>
+            </div>
+
+        </div>
+
+    </div>
+
     <footer>
-        <p style="text-align: center; color: #666; margin-top: 40px;">&copy; 2024 UofT Wearable. All rights reserved.</p>
+        <h3>UofT Wearable</h3>
+        <p class="footer-links">
+            <a href="https://www.instagram.com/uoft_wearable/" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/company/uoft-wearable/" target="_blank">LinkedIn</a>
+        </p>
+        
+        <div class="ombuds-section">
+            <p><strong>Concerns or Complaints?</strong></p>
+            <p>Contact the Ombudsperson: <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a></p>
+            <p>Review the <a href="https://github.com/skule/bylaws/blob/master/policies/Policy-on-Complaints.pdf" target="_blank">Complaints Policy</a></p>
+        </div>
+
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2024 UofT Wearable. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
