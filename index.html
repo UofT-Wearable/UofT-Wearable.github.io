@@ -23,6 +23,9 @@
             line-height: 1.6;
             color: var(--text-dark);
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* --- Navigation --- */
@@ -79,7 +82,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            /* Placeholder image representing tech/labs */
+            /* Background Image */
             background: linear-gradient(rgba(0, 42, 92, 0.7), rgba(0, 42, 92, 0.7)), url('https://images.unsplash.com/photo-1555664424-778a693065af?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
         }
 
@@ -119,6 +122,7 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
+            flex: 1; /* Pushes footer down if content is short */
         }
 
         .section h2 {
@@ -137,61 +141,6 @@
             background: var(--accent-gold);
             margin: 10px auto 0;
         }
-
-        /* --- Carousel Section --- */
-        .carousel-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .carousel-slide {
-            display: none;
-        }
-
-        .carousel-slide.active {
-            display: block;
-            animation: fade 0.5s;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-
-        .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            background: rgba(0, 42, 92, 0.8);
-            color: white;
-            width: 100%;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255,255,255,0.3);
-            border: none;
-            color: white;
-            padding: 15px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s;
-        }
-
-        .carousel-btn:hover {
-            background-color: rgba(0, 42, 92, 0.9);
-        }
-
-        .prev { left: 0; }
-        .next { right: 0; }
 
         /* --- Features/Cards --- */
         .features-grid {
@@ -226,12 +175,19 @@
             color: white;
             padding: 40px 20px;
             text-align: center;
+            margin-top: auto;
         }
 
         .footer-links a {
             color: var(--accent-gold);
             text-decoration: none;
             margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
         }
 
         .ombuds-section {
@@ -255,10 +211,6 @@
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fade {
-            from { opacity: 0.4 } 
-            to { opacity: 1 }
         }
 
         /* Mobile Responsive */
@@ -287,7 +239,7 @@
         <div class="header-bg"></div>
         <h1>Innovating the Future</h1>
         <p>Design, build, and showcase the next generation of wearable technology.</p>
-        <a href="#projects" class="btn">View Our Work</a>
+        <a href="projects.html" class="btn">View Our Work</a>
     </header>
 
     <section class="section" id="about">
@@ -311,40 +263,10 @@
         </div>
     </section>
 
-    <section class="section" id="projects">
-        <h2>Featured Projects</h2>
-        <div class="carousel-container">
-            <div class="carousel-slide active">
-                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" alt="Smart Watch Prototype">
-                <div class="carousel-caption">
-                    <h3>Smart Health Monitor</h3>
-                    <p>Real-time vitals tracking using custom bio-sensors.</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="VR Headset">
-                <div class="carousel-caption">
-                    <h3>Haptic VR Glove</h3>
-                    <p>Feeling the virtual world through piezoelectric feedback.</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop" alt="Circuit Board">
-                <div class="carousel-caption">
-                    <h3>Arduino Wearable Kit</h3>
-                    <p>Educational kits designed for our first-year workshops.</p>
-                </div>
-            </div>
-
-            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
-        </div>
-    </section>
-
     <footer>
         <h3>UofT Wearable</h3>
         <p class="footer-links">
-            <a href="#">Instagram</a>
+            <a href="https://www.instagram.com/uoft_wearable/" target="_blank">Instagram</a>
             <a href="#">LinkedIn</a>
             <a href="#">Discord</a>
         </p>
@@ -358,33 +280,5 @@
         <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2024 UofT Wearable. All rights reserved.</p>
     </footer>
 
-    <script>
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-
-        function showSlide(index) {
-            // Loop functionality
-            if (index >= slides.length) slideIndex = 0;
-            if (index < 0) slideIndex = slides.length - 1;
-
-            // Hide all slides
-            slides.forEach(slide => {
-                slide.classList.remove('active');
-            });
-
-            // Show active slide
-            slides[slideIndex].classList.add('active');
-        }
-
-        function moveSlide(n) {
-            slideIndex += n;
-            showSlide(slideIndex);
-        }
-
-        // Auto play every 5 seconds
-        setInterval(() => {
-            moveSlide(1);
-        }, 5000);
-    </script>
 </body>
 </html>
