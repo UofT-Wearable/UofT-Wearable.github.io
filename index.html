@@ -73,7 +73,6 @@
             position: relative;
         }
 
-        /* Underline hover effect for links */
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -123,12 +122,10 @@
             height: 100%;
             z-index: -1;
             background: linear-gradient(rgba(0, 42, 92, 0.75), rgba(0, 42, 92, 0.75)), url('https://images.unsplash.com/photo-1555664424-778a693065af?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
-            /* Subtle zoom effect on load */
             animation: zoomIn 10s infinite alternate ease-in-out;
         }
 
         header h1 {
-            /* Responsive typography using clamp */
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             margin-bottom: 15px;
             animation: fadeInDown 1s ease forwards;
@@ -152,7 +149,7 @@
             padding: 15px 35px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 50px; /* Modern pill shape */
+            border-radius: 50px;
             transition: transform var(--transition-speed), background var(--transition-speed), box-shadow var(--transition-speed);
             animation: fadeInUp 1s ease forwards;
             animation-delay: 0.4s;
@@ -206,7 +203,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
             border-top: 5px solid var(--uoft-boundless);
-            text-align: left; /* Better readability for text blocks */
+            text-align: left;
         }
 
         .feature-card:hover {
@@ -305,7 +302,6 @@
                 align-items: center;
                 padding: 20px 0;
                 box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-                /* Hide by default for JS toggle */
                 display: none; 
             }
 
@@ -319,7 +315,7 @@
             }
             
             .nav-links a::after {
-                display: none; /* remove hover line on mobile */
+                display: none;
             }
         }
     </style>
@@ -361,9 +357,9 @@
                 <p>From low-level embedded C++ managing Bluetooth Low Energy (BLE) stacks to scalable React Native mobile applications, we build the robust logic behind the hardware.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-users"></i>
-                <h3>Community</h3>
-                <p>Hosting design workshops, intensive hackathons, and industry networking events to connect engineering students directly with the future of biomedical technology.</p>
+                <i class="fas fa-drafting-compass"></i>
+                <h3>Form and Function</h3>
+                <p>We prioritize the physical ergonomics of our devices. Whether designing smart rings, bands, or patches, we ensure our sensor integration is both highly functional and comfortable for the user.</p>
             </div>
         </div>
     </section>
@@ -393,7 +389,6 @@
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
                 
-                // Switch between hamburger and X icon
                 if (navLinks.classList.contains('active')) {
                     toggleIcon.classList.remove('fa-bars');
                     toggleIcon.classList.add('fa-times');
