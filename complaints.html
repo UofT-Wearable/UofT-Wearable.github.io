@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints Policy | UofT Wearable</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --uoft-blue: #002A5C;
+            --uoft-blue-glass: rgba(0, 42, 92, 0.9);
+            --uoft-boundless: #005BBB;
+            --accent-gold: #FFD700;
+            --light-gray: #f4f4f4;
+            --text-dark: #333;
+            --transition-speed: 0.3s;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0; padding: 0;
+            line-height: 1.7;
+            color: var(--text-dark);
+            display: flex; flex-direction: column; min-height: 100vh;
+        }
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: var(--uoft-blue-glass);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            padding: 15px 5%; position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .nav-logo { color: white; font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: white; text-decoration: none; margin-left: 25px; font-weight: 500;
+            transition: color var(--transition-speed); text-transform: uppercase;
+            font-size: 0.9rem; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+            background-color: var(--accent-gold); transition: width var(--transition-speed);
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--accent-gold); }
+        .nav-links a.is-current { color: var(--accent-gold); }
+        .nav-links a.is-current::after { width: 100%; }
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        .policy-hero {
+            background: var(--uoft-blue); color: white;
+            padding: 55px 5% 45px; text-align: center;
+        }
+        .policy-hero h1 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 2.8rem); }
+        .policy-hero p { margin: 0 auto; max-width: 640px; font-weight: 300; opacity: 0.9; }
+        .stamp {
+            display: inline-block; margin-top: 22px; padding: 8px 18px;
+            border: 1px solid var(--accent-gold); border-radius: 50px;
+            color: var(--accent-gold); font-size: 0.85rem; font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        main { flex: 1; max-width: 860px; margin: 0 auto; padding: 50px 20px 70px; width: 100%; }
+
+        .contact-block {
+            background: var(--light-gray); border-left: 5px solid var(--uoft-boundless);
+            border-radius: 8px; padding: 26px 28px; margin-bottom: 45px;
+        }
+        .contact-block p { margin: 0 0 12px; }
+        .contact-block p:last-child { margin-bottom: 0; }
+        .contact-block strong { color: var(--uoft-blue); }
+        .policy-url {
+            display: block; word-break: break-all; font-size: 0.95rem;
+            color: var(--uoft-boundless); text-decoration: none; font-weight: 500;
+        }
+        .policy-url:hover { text-decoration: underline; }
+        a[href^="mailto:"] { color: var(--uoft-boundless); font-weight: 500; }
+
+        main h2 {
+            color: var(--uoft-blue); font-size: 1.35rem; margin: 38px 0 12px;
+            padding-bottom: 8px; border-bottom: 2px solid var(--accent-gold);
+        }
+        main h2:first-of-type { margin-top: 0; }
+        main ul { padding-left: 22px; }
+        main li { margin-bottom: 8px; }
+
+        footer {
+            background-color: var(--uoft-blue); color: white;
+            padding: 40px 20px 28px; text-align: center; margin-top: auto;
+        }
+        .footer-links a {
+            color: var(--accent-gold); text-decoration: none; margin: 0 15px;
+            font-size: 1.5rem; display: inline-block;
+            transition: color var(--transition-speed), transform var(--transition-speed);
+        }
+        .footer-links a:hover { color: white; transform: scale(1.1); }
+        .ombuds-section {
+            background-color: rgba(255,255,255,0.05); padding: 22px; margin: 26px auto;
+            max-width: 620px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem;
+        }
+        .ombuds-section a { color: var(--accent-gold); text-decoration: none; word-break: break-all; }
+        .ombuds-section a:hover { text-decoration: underline; }
+        .ombuds-stamp { display: block; margin-top: 10px; font-size: 0.8rem; opacity: 0.7; }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute; top: 100%; left: 0; width: 100%;
+                background-color: var(--uoft-blue); flex-direction: column; align-items: center;
+                padding: 20px 0; box-shadow: 0 5px 10px rgba(0,0,0,0.2); display: none;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 15px 0; font-size: 1.1rem; }
+            .nav-links a::after { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">UofT Wearable</a>
+        <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="nav-links">
+            <a href="about.html">About</a>
+            <a href="Our Team.html">Team</a>
+            <a href="projects.html">Projects</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <a href="complaints.html" class="is-current">Complaints</a>
+        </div>
+    </nav>
+
+    <div class="policy-hero">
+        <h1>Complaints Policy</h1>
+        <p>Every member of UofT Wearable is subject to the Engineering Society Policy on Complaints. Here is how to raise a concern and what happens next.</p>
+        <span class="stamp">Posted <time datetime="2026-08-22">August 22, 2026</time></span>
+    </div>
+
+    <main>
+        <div class="contact-block">
+            <p><strong>Complaints go to:</strong> <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a>, the Ombudsperson, a neutral third party officer.</p>
+            <p><strong>Complaints against the Ombudsperson go to:</strong> <a href="mailto:speaker@g.skule.ca">speaker@g.skule.ca</a></p>
+            <p><strong>Link to the Complaints Policy:</strong>
+                <a class="policy-url" href="https://skule.github.io/bylaws/policies/policy-on-complaints.html" target="_blank" rel="noopener">https://skule.github.io/bylaws/policies/policy-on-complaints.html</a>
+            </p>
+        </div>
+
+        <h2>Who can you complain about?</h2>
+        <p>Officers, Project Directors and members of their team, Board of Directors members, and Affiliated Club members.</p>
+
+        <h2>Reasons for complaints</h2>
+        <p>Harassment, sexual violence, defamation, slander, or a failure to do their job. Also violations of the University of Toronto Code of Student Conduct or the Standards of Affiliation according to the Policy on Affiliated Clubs.</p>
+
+        <h2>Can they be anonymous?</h2>
+        <p>Unless your identity as the complainant is necessary for the complaint, yes.</p>
+
+        <h2>Complaints must include</h2>
+        <p>Sufficient detail to begin an investigation.</p>
+
+        <h2>Possible response</h2>
+        <ul>
+            <li>No action, where there is a lack of proof, the actions are not considered misconduct, or the actions happened outside the time period of their role.</li>
+            <li>An offer to mediate a solution.</li>
+            <li>A factual recommendation report is created, which is executed according to the voting of the relevant executive body, typically the Club Affiliation Committee or Board of Directors, with care taken for privacy. The investigator cannot take any executive action on their own accord.</li>
+        </ul>
+
+        <h2>Possible recommendations</h2>
+        <ul>
+            <li>Recall subject of complaint from their position.</li>
+            <li>Take steps under the Policy on Affiliated Clubs, section 0.9.</li>
+            <li>Mandate additional training.</li>
+            <li>Require subject of complaint to issue an official apology.</li>
+            <li>Escalate matter to campus police.</li>
+            <li>Escalate matter to governmental law enforcement.</li>
+            <li>Escalate matter to the Office of the Faculty Dean.</li>
+            <li>Escalate matter to the Division of Student Life.</li>
+            <li>Escalate matter to the Office of the University Provost.</li>
+            <li>Amend EngSoc Bylaws and/or Policies.</li>
+            <li>Take some other specific action, with additional justification for such an extraordinary recommendation.</li>
+            <li>Any combination of the above.</li>
+        </ul>
+    </main>
+
+    <footer>
+        <h3 style="margin-bottom: 20px; font-size: 1.8rem;">UofT Wearable</h3>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/uoft_wearable/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/uoft-wearable/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="ombuds-section">
+            <p><strong>Concerns or Complaints?</strong></p>
+            <p>Contact the Ombudsperson: <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a></p>
+            <p>Complaints Policy: <a href="https://skule.github.io/bylaws/policies/policy-on-complaints.html" target="_blank" rel="noopener">https://skule.github.io/bylaws/policies/policy-on-complaints.html</a></p>
+            <span class="ombuds-stamp">Posted <time datetime="2026-08-22">August 22, 2026</time></span>
+        </div>
+        <p style="margin-top: 26px; font-size: 0.85rem; opacity: 0.6;">&copy; 2026 UofT Wearable. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+            const toggleIcon = menuToggle.querySelector('i');
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const open = navLinks.classList.contains('active');
+                toggleIcon.classList.toggle('fa-bars', !open);
+                toggleIcon.classList.toggle('fa-times', open);
+            });
+        });
+    </script>
+</body>
+</html>
