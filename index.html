@@ -6,7 +6,7 @@
     <title>UofT Wearable Technology</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <style>
         :root {
             --uoft-blue: #002A5C;
@@ -18,9 +18,7 @@
             --transition-speed: 0.3s;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             font-family: 'Roboto', sans-serif;
@@ -57,10 +55,7 @@
             letter-spacing: 1px;
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
+        .nav-links { display: flex; align-items: center; }
 
         .nav-links a {
             color: white;
@@ -84,26 +79,45 @@
             transition: width var(--transition-speed);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--accent-gold); }
 
-        .nav-links a:hover {
+        .nav-links a.nav-complaints {
             color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            border-radius: 50px;
+            padding: 6px 16px;
+        }
+        .nav-links a.nav-complaints::after { display: none; }
+        .nav-links a.nav-complaints:hover {
+            background-color: var(--accent-gold);
+            color: var(--uoft-blue);
         }
 
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- Complaints notice bar (above the fold) --- */
+        .notice-bar {
+            background-color: var(--accent-gold);
+            color: var(--uoft-blue);
+            text-align: center;
+            padding: 12px 5%;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+        .notice-bar a { color: var(--uoft-blue); font-weight: 700; }
+        .notice-bar .notice-stamp {
+            display: inline-block;
+            margin-left: 6px;
+            font-weight: 400;
+            opacity: 0.75;
+            font-size: 0.85rem;
         }
 
         /* --- Hero Section --- */
         header {
             position: relative;
-            height: 85vh;
+            height: 78vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -116,10 +130,8 @@
 
         .header-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -1;
             background: linear-gradient(rgba(0, 42, 92, 0.75), rgba(0, 42, 92, 0.75)), url('https://images.unsplash.com/photo-1555664424-778a693065af?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
             animation: zoomIn 10s infinite alternate ease-in-out;
@@ -216,19 +228,12 @@
             color: var(--uoft-blue);
             margin-bottom: 20px;
             background: var(--light-gray);
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 70px; height: 70px;
+            display: flex; align-items: center; justify-content: center;
             border-radius: 50%;
         }
 
-        .feature-card h3 {
-            margin-top: 0;
-            color: var(--uoft-blue);
-            font-size: 1.4rem;
-        }
+        .feature-card h3 { margin-top: 0; color: var(--uoft-blue); font-size: 1.4rem; }
 
         /* --- Footer --- */
         footer {
@@ -247,77 +252,49 @@
             transition: color var(--transition-speed), transform var(--transition-speed);
             display: inline-block;
         }
-        
-        .footer-links a:hover {
-            color: white;
-            transform: scale(1.1);
-        }
+
+        .footer-links a:hover { color: white; transform: scale(1.1); }
 
         .ombuds-section {
             background-color: rgba(255, 255, 255, 0.05);
             padding: 25px;
             margin: 30px auto;
-            max-width: 600px;
+            max-width: 620px;
             border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.1);
             font-size: 0.95rem;
         }
 
-        .ombuds-section a {
-            color: var(--accent-gold);
-            text-decoration: none;
-        }
-        
-        .ombuds-section a:hover {
-            text-decoration: underline;
-        }
+        .ombuds-section a { color: var(--accent-gold); text-decoration: none; word-break: break-all; }
+        .ombuds-section a:hover { text-decoration: underline; }
+        .ombuds-stamp { display: block; margin-top: 10px; font-size: 0.8rem; opacity: 0.7; }
 
         /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes zoomIn {
-            from { transform: scale(1); }
-            to { transform: scale(1.05); }
-        }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes zoomIn { from { transform: scale(1); } to { transform: scale(1.05); } }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
+            .menu-toggle { display: block; }
             .nav-links {
                 position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
+                top: 100%; left: 0; width: 100%;
                 background-color: var(--uoft-blue);
                 flex-direction: column;
                 align-items: center;
                 padding: 20px 0;
                 box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-                display: none; 
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                margin: 15px 0;
-                font-size: 1.1rem;
-            }
-            
-            .nav-links a::after {
                 display: none;
             }
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 15px 0; font-size: 1.1rem; }
+            .nav-links a::after { display: none; }
+            .nav-links a.nav-complaints { margin: 18px 0; }
+            .notice-bar { font-size: 0.85rem; }
         }
+
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
     </style>
 </head>
 <body>
@@ -333,8 +310,16 @@
             <a href="projects.html">Projects</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
+            <a href="complaints.html" class="nav-complaints">Complaints</a>
         </div>
     </nav>
+
+    <div class="notice-bar">
+        Concerns or complaints? Contact the Ombudsperson at
+        <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a>
+        or read the <a href="complaints.html">EngSoc Complaints Policy</a>.
+        <span class="notice-stamp">Posted <time datetime="2026-08-22">August 22, 2026</time></span>
+    </div>
 
     <header>
         <div class="header-bg"></div>
@@ -367,14 +352,16 @@
     <footer>
         <h3 style="margin-bottom: 20px; font-size: 1.8rem;">UofT Wearable</h3>
         <div class="footer-links">
-            <a href="https://www.instagram.com/uoft_wearable/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/company/uoft-wearable/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/uoft_wearable/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/uoft-wearable/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
-        
+
         <div class="ombuds-section">
             <p><strong>Concerns or Complaints?</strong></p>
             <p>Contact the Ombudsperson: <a href="mailto:ombudsperson@g.skule.ca">ombudsperson@g.skule.ca</a></p>
-            <p>Review the <a href="https://github.com/skule/bylaws/blob/master/policies/Policy-on-Complaints.pdf" target="_blank">Skule Complaints Policy</a></p>
+            <p>Complaints Policy: <a href="https://skule.github.io/bylaws/policies/policy-on-complaints.html" target="_blank" rel="noopener">https://skule.github.io/bylaws/policies/policy-on-complaints.html</a></p>
+            <p>Full summary: <a href="complaints.html">Complaints tab</a></p>
+            <span class="ombuds-stamp">Posted <time datetime="2026-08-22">August 22, 2026</time></span>
         </div>
 
         <p style="margin-top: 30px; font-size: 0.85rem; opacity: 0.6;">&copy; 2026 UofT Wearable. All rights reserved.</p>
@@ -388,14 +375,9 @@
 
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
-                
-                if (navLinks.classList.contains('active')) {
-                    toggleIcon.classList.remove('fa-bars');
-                    toggleIcon.classList.add('fa-times');
-                } else {
-                    toggleIcon.classList.remove('fa-times');
-                    toggleIcon.classList.add('fa-bars');
-                }
+                const open = navLinks.classList.contains('active');
+                toggleIcon.classList.toggle('fa-bars', !open);
+                toggleIcon.classList.toggle('fa-times', open);
             });
         });
     </script>
